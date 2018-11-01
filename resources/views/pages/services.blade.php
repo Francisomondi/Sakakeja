@@ -1,5 +1,5 @@
-@include('includes.header')
+@include('layouts.header')
 
 
  
-@include('includes.footer')
+@include('layouts.footer')

@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>{{config('app.name','sakakeja')}}</title>
+        <title>{{config('app.name','sakakejaApplication')}}</title>
         <link rel="stylesheet" type="text/css" href="{{ url('css/bootstrap.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ url('css/style.css') }}">
         <script type="text/javascript" src="{{ url('js/jquery-1.8.3.min.js') }}"></script> 

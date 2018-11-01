@@ -19,3 +19,7 @@ Route::resource('companies','companiesController');
 
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

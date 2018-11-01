@@ -1,4 +1,4 @@
-@include('includes.header')
+@include('layouts.header')
 <div class="container">
             <h1>Companies</h1>
         @if(count($companies) > 0)
@@ -28,7 +28,11 @@
     @else
     <p> no companies found</p>
         @endif 
+
+        <a class="btn btn-lg btn-info" href="{{url('/')}}" role="button">Back</a>
 </div>
+
+
  
-@include('includes.footer')
+@include('layouts.footer')
 
