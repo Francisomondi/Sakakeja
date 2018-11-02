@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\company;
 
-class companiesController extends Controller
+class rolesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,7 @@ class companiesController extends Controller
      */
     public function index()
     {
-       $companies= company::all();
-        return view('companies.index')->with('companies', $companies);
+        //
     }
 
     /**
@@ -47,8 +45,7 @@ class companiesController extends Controller
      */
     public function show($id)
     {
-        $companies = company::where('id',$id)->first();
-        return view('companies.show')->with('companies',$companies);
+        //
     }
 
     /**

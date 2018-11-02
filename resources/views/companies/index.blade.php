@@ -1,38 +1,35 @@
-@include('layouts.header')
-<div class="container">
-            <h1>Companies</h1>
-        @if(count($companies) > 0)
+@include('layouts.app')
 
-        @foreach($companies->all() as $company)
-            <table class="table table-hover">
-                <thead>
-                <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">phone</th>
-                    <th scope="col">email</th>
-                </tr>
-                </thead>
-                <tbody>
-                    
-                <tr class="table-active">
-                <th scope="col">{{$company->id}}</th>
-                    <td>{{$company->name}}</td>
-                    <td>{{$company->phone}}</td>
-                    <td>{{$company->email}}</td>
-                </tr>
-                
-                </tbody>
-            </table>
-        @endforeach
-    @else
-    <p> no companies found</p>
-        @endif 
+            <div class="container">
+                        <h1>Companies</h1>
+                    @if(count($companies) > 0)
 
-        <a class="btn btn-lg btn-info" href="{{url('/')}}" role="button">Back</a>
-</div>
+                    @foreach($companies->all() as $company)
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">phone</th>
+                                <th scope="col">email</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                
+                            <tr class="table-active">
+                            <th scope="col">{{$company->id}}</th>
+                            <td><a href ="/companies/{{$company->id}}">{{$company->name}}</a></td>
+                                <td>{{$company->phone}}</td>
+                                <td>{{$company->email}}</td>
+                            </tr>
+                            
+                            </tbody>
+                        </table>
+                    @endforeach
+                @else
+                <p> no companies found</p>
+                    @endif 
 
-
- 
+                    <a class="btn btn-lg btn-info" href="{{url('/')}}" role="button">Back</a>
+            </div>
 @include('layouts.footer')
-
