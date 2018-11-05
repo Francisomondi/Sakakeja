@@ -23,3 +23,10 @@ Route::resource('companies','companiesController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('apartments','apartmentsController');
+Route::resource('categories','categoriesController');
+Route::resource('comments','commentsController');
+Route::resource('estates','estatesController');
+Route::resource('houses','housesController');
+Route::resource('roles','rolesController');
+Route::resource('users','usersController');

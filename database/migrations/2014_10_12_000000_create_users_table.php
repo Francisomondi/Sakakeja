@@ -19,10 +19,19 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+
             $table->rememberToken();
             $table->timestamps();
         });
+
+        Schema::table('users', function (Blueprint $table) {
+           $table->integer('role_id')->unsigned()->default(1);
+           
+
+        });
     }
+
+  
 
     /**
      * Reverse the migrations.

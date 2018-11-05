@@ -15,6 +15,14 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
+            $table->longText('description');
+            $table->integer('house_id')->unsigned()->unsigned();
+            $table->integer('apartment_id')->unsigned()->unsigned();
+            $table->integer('estate_id')->unsigned()->unsigned();
+            $table->foreign('apartment_id')->references('id')->on('apartments');
+            $table->foreign('house_id')->references('id')->on('houses');
+            $table->foreign('estate_id')->references('id')->on('companies');
             $table->timestamps();
         });
     }

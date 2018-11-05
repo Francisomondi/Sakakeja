@@ -15,6 +15,13 @@ class CreateApartmentsTable extends Migration
     {
         Schema::create('apartments', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
+            $table->longText('description');
+            $table->longText('location');
+            $table->integer('company_id')->unsigned()->unsigned();
+            $table->integer('estate_id')->unsigned()->unsigned();
+            $table->foreign('estate_id')->references('id')->on('estates');
+            $table->foreign('company_id')->references('id')->on('companies');
             $table->timestamps();
         });
     }

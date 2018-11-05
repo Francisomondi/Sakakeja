@@ -15,6 +15,13 @@ class CreateHousesTable extends Migration
     {
         Schema::create('houses', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('company_id')->unsigned()->unsigned();
+            $table->integer('estate_id')->unsigned()->unsigned();
+            $table->integer('apartment_id')->unsigned()->unsigned();
+            $table->foreign('estate_id')->references('id')->on('estates');
+            $table->foreign('company_id')->references('id')->on('companies');
+            $table->foreign('apartment_id')->references('id')->on('apartments');
+            
             $table->timestamps();
         });
     }
