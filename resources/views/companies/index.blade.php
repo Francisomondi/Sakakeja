@@ -1,6 +1,5 @@
-@include('layouts.app')
-
-            <div class="container">
+@extends('layouts.app')
+@section('content')
                 <div class="panel panel-danger">
                     <div class="panel-heading">Companies</div>
 
@@ -34,7 +33,7 @@
                         <p> no companies found</p>
                             @endif 
         
-                            <a class="btn btn-lg btn-info" href="{{url('/')}}" role="button">Back</a>
+                            <a class="btn btn-lg btn-info" href="{{url('/home')}}" role="button">Back</a>
 
                     </div>
 
@@ -43,5 +42,4 @@
                 </div>
                     
                   
-            </div>
-@include('layouts.footer')
+@endsection

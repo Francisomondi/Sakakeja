@@ -1,5 +1,7 @@
-@include('layouts.app')
+@extends('layouts.app')
+@section('content')
+<div class="images">
+    
+</div>
 
-
- 
-@include('layouts.footer')
+@endsection

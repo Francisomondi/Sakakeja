@@ -18,8 +18,8 @@ class CreateApartmentsTable extends Migration
             $table->string('name');
             $table->longText('description');
             $table->longText('location');
-            $table->integer('company_id')->unsigned()->unsigned();
-            $table->integer('estate_id')->unsigned()->unsigned();
+            $table->integer('company_id')->unsigned()->nullable();
+            $table->integer('estate_id')->unsigned()->nullable();
             $table->foreign('estate_id')->references('id')->on('estates');
             $table->foreign('company_id')->references('id')->on('companies');
             $table->timestamps();

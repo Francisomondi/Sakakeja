@@ -25,7 +25,7 @@ class companiesController extends Controller
      */
     public function create()
     {
-        //
+        return view('companies.create'); 
     }
 
     /**
@@ -36,7 +36,22 @@ class companiesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'description' => 'required',
+            'email' => 'required',
+            'phone' => 'required'
+        ]);
+
+        $companies = new company;
+        $companies ->name = $request->input('name');
+        $companies ->description = $request->input('description');
+        $companies ->email = $request->input('email');
+        $companies ->phone = $request->input('phone');
+        $companies ->user_id = auth()->user()->id;
+        $companies ->save();
+
+        return redirect('/companies')->with('success', 'Company Created Successfully');
     }
 
     /**
@@ -59,7 +74,8 @@ class companiesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $companies = company::where('id',$id)->first();
+        return view('companies.edit')->with('companies',$companies);
     }
 
     /**
@@ -71,7 +87,21 @@ class companiesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'description' => 'required',
+            'email' => 'required',
+            'phone' => 'required'
+        ]);
+
+        $companies = company::find($id);
+        $companies ->name = $request->input('name');
+        $companies ->description = $request->input('description');
+        $companies ->email = $request->input('email');
+        $companies ->phone = $request->input('phone');
+        $companies ->save();
+
+        return redirect('/companies')->with('success', 'Company updated Successfully');
     }
 
     /**
@@ -82,6 +112,6 @@ class companiesController extends Controller
      */
     public function destroy($id)
     {
-        //
+       dd($id);
     }
 }

@@ -30,3 +30,10 @@ Route::resource('estates','estatesController');
 Route::resource('houses','housesController');
 Route::resource('roles','rolesController');
 Route::resource('users','usersController');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
