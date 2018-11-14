@@ -104,7 +104,7 @@ class companiesController extends Controller
         return redirect('/companies')->with('success', 'Company updated Successfully');
     }
 
-    /**
+    /** 
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -112,6 +112,11 @@ class companiesController extends Controller
      */
     public function destroy($id)
     {
-       dd($id);
+       $companies = company::find($id);
+       $companies->delete();
+
+       return redirect('/companies')->with('success', 'Company deleted Successfully');
+
     }
 }
+ 

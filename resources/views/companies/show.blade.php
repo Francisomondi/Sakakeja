@@ -33,16 +33,15 @@
                   <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
                     <div class="list-group">
                     <a href="/companies/{{ $companies->id }}/edit" class="btn btn-primary ">Edit company</a>
+                    <a href="#" class="btn btn-success">Add Houses</a>
 
-                      <a href="#"
-                      onClick="
-                       var result= confirm('are you sure you want to delete this project?');
-                       if(result){
-                         event.preventDefault();
-                         document.getElementById('delete-form').submit();
-                       }" class="btn btn-danger">Delete company</a>
-                      
-                      <a href="#" class="btn btn-success">Add Houses</a>
+                    {!!Form::open(['action'=> ['companiesController@destroy',$companies->id],'method'=> 'POST','class'=>'pull-right'])!!}
+                    {{Form::hidden('_method','DELETE')}}
+                    {{Form::submit('Delete company',['class'=>'btn btn-danger'])}}
+                    {!!Form::close()!!}
+                 
+                  
+                     
                   
                       
                     </div>
