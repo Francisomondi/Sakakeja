@@ -7,6 +7,17 @@ use App\company;
 
 class companiesController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth',['except'=> ['show','index']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +25,7 @@ class companiesController extends Controller
      */
     public function index()
     {
-       $companies= company::all();
+       $companies= company::orderBy('created_at','desc')->paginate(5);
         return view('companies.index')->with('companies', $companies);
     }
 
@@ -75,6 +86,9 @@ class companiesController extends Controller
     public function edit($id)
     {
         $companies = company::where('id',$id)->first();
+        if(auth()->user()->id !== $companies->user_id){
+            return redirect('/companies')->with('error','Unauthorized aceess ');
+        }
         return view('companies.edit')->with('companies',$companies);
     }
 
@@ -113,6 +127,9 @@ class companiesController extends Controller
     public function destroy($id)
     {
        $companies = company::find($id);
+       if(auth()->user()->id !== $companies->user_id){
+        return redirect('/companies')->with('error','Unauthorized aceess ');
+    }
        $companies->delete();
 
        return redirect('/companies')->with('success', 'Company deleted Successfully');
