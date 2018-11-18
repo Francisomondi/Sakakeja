@@ -1,5 +1,7 @@
 @extends('layouts.app')
 @section('content')
+<a class="btn btn-primary" href="/home" role="button">Back
+    &raquo;</a>
                
      <legend>Companies</legend>
                  
@@ -30,8 +32,8 @@
          </tbody>
         
     </table>
-                           
-    {{$companies->links()}}  
-   <a class="btn btn-lg btn-primary" href="{{url('/home')}}" role="button">Back</a>    
-             
+
+                    {{$companies->links()}} 
+              
+   
 @endsection

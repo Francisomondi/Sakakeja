@@ -3,8 +3,7 @@
 
 
 @section('content')
-<p><a class="btn btn-primary" href="/home" role="button">Back
-    &raquo;</a></p>
+
                     <h1>Create Company</h1>
                     <hr>
                     {!! Form::open(['action'=>'companiesController@store','method'=>'POST']) !!}
@@ -26,8 +25,13 @@
                             {{Form::label('phone', 'Phone Number')}}
                             {{Form::tel('phone','',['class'=>'form-control', 'placeholder'=>'phone number'])}}
                         </div>
-                        {{Form::submit('Create Company', ['class'=>'btn btn-primary'])}}
-                    
+                        <div class="form-group">
+                            <div class="col-lg-10 col-lg-offset-2">
+                                {{Form::submit('Create Company', ['class'=>'btn btn-primary'])}}
+                                <a class="btn btn-primary" href="/home" role="button">Back
+                                    &raquo;</a>
+                            </div>
+                        </div>
                     {!! Form::close() !!}
 
 @endsection
