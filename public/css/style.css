@@ -16,3 +16,11 @@
 	margin:5px;
 }
 
+
+body{
+	background-color: white;
+	background: rgba(0, 0, 0, 0.8);
+	background-image: url('/../images/keja.jpg');
+	background-attachment: fixed;
+	font-size: 20px;
+}
