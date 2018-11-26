@@ -23,6 +23,7 @@ Route::resource('companies','companiesController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/estates/create/{company_id?}', 'estatesController@create');  
 Route::resource('apartments','apartmentsController');
 Route::resource('categories','categoriesController');
 Route::resource('comments','commentsController');

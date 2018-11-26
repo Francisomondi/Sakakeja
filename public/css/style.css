@@ -18,9 +18,19 @@
 
 
 body{
-	background-color: white;
-	background: rgba(0, 0, 0, 0.8);
 	background-image: url('/../images/keja.jpg');
 	background-attachment: fixed;
 	font-size: 20px;
+}
+#company-table{
+	background: rgba(0, 0, 0, 0.8);
+	color: #fff;
+}
+.card{
+	background: rgba(0, 0, 0, 0.8);
+	color: #fff;
+}
+.jumbotron{
+	background: rgba(0, 0, 0, 0.8);
+	color: #fff;
 }

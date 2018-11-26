@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\estate;
+use App\company;
 
 class estatesController extends Controller
 {
@@ -13,7 +15,8 @@ class estatesController extends Controller
      */
     public function index()
     {
-        //
+      //  $estates= estate::orderBy('created_at','desc')->paginate(5);
+      //  return view('estates.index')->with('estates', $estates);
     }
 
     /**
@@ -21,9 +24,9 @@ class estatesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($company_id = null)
     {
-        //
+        return view('estates.create')->with('company_id',$company_id); 
     }
 
     /**
@@ -34,7 +37,21 @@ class estatesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'location' => 'required'
+            
+        ]);
+
+        $estates = new estate;
+        $estates ->name = $request->input('name');
+        $estates ->location = $request->input('location');
+        $estates ->company_id = $request->input('company_id');
+        $estates ->user_id = auth()->user()->id;
+       
+        $estates ->save();
+ 
+        return redirect('/estates/create')->with('success', 'estate Created Successfully');
     }
 
     /**

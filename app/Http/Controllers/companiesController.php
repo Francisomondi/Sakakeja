@@ -70,9 +70,10 @@ class companiesController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */
+     */ 
     public function show($id)
     {
+        $companies = company::find($id);
         $companies = company::where('id',$id)->first();
         return view('companies.show')->with('companies',$companies);
     }
@@ -87,7 +88,7 @@ class companiesController extends Controller
     {
         $companies = company::where('id',$id)->first();
         if(auth()->user()->id !== $companies->user_id){
-            return redirect('/companies')->with('error','Unauthorized aceess ');
+            return redirect('/companies')->with('error','Unauthorized access ');
         }
         return view('companies.edit')->with('companies',$companies);
     }

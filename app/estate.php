@@ -14,6 +14,9 @@ class estate extends Model
     public function company(){
         return $this->belongsToMany('App\company');
     }
+    public function user(){
+        return $this->belongsTo('App\user');
+    }
     public function apartments(){
         return $this->hasMany('App\apartment');
         

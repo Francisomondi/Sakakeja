@@ -12,6 +12,7 @@ class company extends Model
           'phone',
           'description',
           'user_id',
+          'company_id',
 
     ];
     public function user(){

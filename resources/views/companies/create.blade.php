@@ -4,7 +4,7 @@
 
 @section('content')
 
-                    <h1>Create Company</h1>
+                   <h1>Create Company</h1> 
                     <hr>
                     {!! Form::open(['action'=>'companiesController@store','method'=>'POST']) !!}
                         <div class="form-group">

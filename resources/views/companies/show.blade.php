@@ -9,10 +9,13 @@
                     <p class="pull-right visible-xs">
                       
                     </p>
-                    <div class="jumbotron">
+                    <div class="well well-lg">
                       <h1>{{$companies->name}}</h1>
+                   
                       <p>{{$companies->description}}</p>
+                      <small>created by {{$companies->user->name}}</small>
                     </div>
+                    
                     <hr>
                   <div class="row">
                         @if(count($companies->estates)>0)
@@ -35,7 +38,9 @@
                       @if(!Auth::guest())
                             @if(Auth::user()->id == $companies->user_id)
                                   <a href="/companies/{{ $companies->id }}/edit" class="btn btn-primary ">Edit company</a>
+                    <a href="/estates/create/{{$companies->id}}" class="btn btn-success">Add Estate</a>
                                   <a href="/house/create" class="btn btn-success">Add Houses</a>
+                                  
 
                                   {!!Form::open(['action'=> ['companiesController@destroy',$companies->id],'method'=> 'POST','class'=>'pull-right'])!!}
                                   {{Form::hidden('_method','DELETE')}}

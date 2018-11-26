@@ -28,7 +28,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
     public function company(){
-        return $this->belongsTo('App\company');
+        return $this->hasOne('App\company');
+    }
+    public function estate(){
+        return $this->hasMany('App\estate');
     }
     public function comments(){
         return $this->hasMany('App\comment');

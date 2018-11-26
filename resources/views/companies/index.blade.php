@@ -5,13 +5,14 @@
                
      <legend>Companies</legend>
                  
-     <table class="table table-striped table-hover">
+     <table class="table table-striped table-hover" id="company-table">
          <thead>
              <tr>
                  <th>Id ||</th>
                  <th>Name</th>
                  <th>phone</th>
                  <th>email</th>
+                 <th>owner</th>
              </tr>
          </thead>
          <tbody>
@@ -22,6 +23,7 @@
                          <td><a href ="/companies/{{$company->id}}">{{$company->name}}</a></td>
                          <td>{{$company->phone}}</td>
                          <td>{{$company->email}}</td>
+                         <td>{{$company->user->name}}</td>
                      </tr>
                  @endforeach
                     
