@@ -15,8 +15,8 @@ class estatesController extends Controller
      */
     public function index()
     {
-      //  $estates= estate::orderBy('created_at','desc')->paginate(5);
-      //  return view('estates.index')->with('estates', $estates);
+       $estates= estate::orderBy('created_at','desc')->paginate(5);
+      return view('estates.index')->with('estates', $estates);
     }
 
     /**
@@ -48,10 +48,9 @@ class estatesController extends Controller
         $estates ->location = $request->input('location');
         $estates ->company_id = $request->input('company_id');
         $estates ->user_id = auth()->user()->id;
-       
         $estates ->save();
  
-        return redirect('/estates/create')->with('success', 'estate Created Successfully');
+        return redirect('/estates')->with('success', 'estate Created Successfully');
     }
 
     /**
@@ -62,7 +61,9 @@ class estatesController extends Controller
      */
     public function show($id)
     {
-        //
+        $estates = estate::find($id);
+        $estates = estate::where('id',$id)->first();
+        return view('estates.show')->with('estates',$estates);
     }
 
     /**
@@ -73,7 +74,11 @@ class estatesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $estates = estate::where('id',$id)->first();
+        if(auth()->user()->id !== $estates->user_id){
+            return redirect('/estates')->with('error','Unauthorized access ');
+        }
+        return view('estates.edit')->with('estates',$estates);
     }
 
     /**

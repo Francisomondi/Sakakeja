@@ -17,7 +17,7 @@
                             {{Form::textArea('location', '', ['class'=>'form-control', 'placeholder'=>'Location'])}}
                         </div>
                         <div class="form-group">
-                                {{Form::hidden('_method', $company_id)}}
+                                {{Form::hidden('company_id', $company_id)}}
                             
                             </div> 
                         

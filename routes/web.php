@@ -33,8 +33,3 @@ Route::resource('roles','rolesController');
 Route::resource('users','usersController');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

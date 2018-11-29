@@ -21,6 +21,6 @@ class house extends Model
         return $this->belongsTo('App\company');
     }
     public function categories(){
-        return $this->hasMany('App\categories');
+        return $this->hasMany('App\category');
     }
 }
