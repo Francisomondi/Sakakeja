@@ -19,7 +19,7 @@
                               <h1>Looking For Vaccant Rentals Around You??</h1>
                               <p>Saka keja offers a platform to find a rental house of your choice from a location of your
                                    choice with just a click of a button ,Its absolutely free!!</button></p>
-                              <p><a class="btn btn-primary btn-lg" href="/houses" role="button">view rentals &raquo;</a></p>
+                              <p><a class="btn btn-primary btn-lg" href="/apartments" role="button">view rentals &raquo;</a></p>
                             </div>
                           </div>
                 </div>

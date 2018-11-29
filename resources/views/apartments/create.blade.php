@@ -18,6 +18,10 @@
     {{Form::textArea('location', '', ['class'=>'form-control', 'placeholder'=>'location'])}}
 </div>
 <div class="form-group">
+    {{Form::hidden('company_id', $company_id)}}
+
+</div> 
+<div class="form-group">
     {{Form::label('cover_image', 'Cover image')}}
     {{Form::file('cover_image')}}
 </div>

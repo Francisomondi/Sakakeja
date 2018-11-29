@@ -17,6 +17,7 @@
                         <img class="card-img-top" src="/storage/cover_images/{{ $apartment->cover_image }}" alt="apartment cover image">
                           <div class="card-body">
                             <p class="card-text">{{$apartment->description}}.</p>
+                            
                             <button class="btn btn-default " style="aligh: center">{{$apartment->category}}</button>
                             <div class="d-flex justify-content-between align-items-center">
                               <div class="btn-group">
@@ -27,6 +28,7 @@
                             </div>
                           </div>
                         </div>
+                        
                       </div>
                       @endforeach
 
@@ -38,9 +40,12 @@
                   </div>
                  
             </div>
+          <a class="btn btn-primary" href="/home" role="button">Back
+              &raquo;</a>
 </div>
 
 
 </main>
+
 
 @endsection

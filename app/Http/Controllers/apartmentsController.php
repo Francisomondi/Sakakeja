@@ -24,9 +24,9 @@ class apartmentsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($company_id=null)
     {
-        return view('apartments.create');
+        return view('apartments.create') ->with('company_id', $company_id);
     }
 
     /**
@@ -72,6 +72,7 @@ class apartmentsController extends Controller
         $apartments ->description = $request->input('description');
         $apartments ->location = $request->input('location');
         $apartments ->cover_image = $fileNameToStore;
+        $apartments ->company_id = $request->input('company_id');
         $apartments ->user_id = auth()->user()->id;
         $apartments ->save();
 

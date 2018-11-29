@@ -38,8 +38,8 @@
                       @if(!Auth::guest())
                             @if(Auth::user()->id == $companies->user_id)
                                   <a href="/companies/{{ $companies->id }}/edit" class="btn btn-primary ">Edit company</a>
-                    <a href="/estates/create/{{$companies->id}}" class="btn btn-success">Add Estate</a>
-                                  <a href="/house/create" class="btn btn-success">Add Houses</a>
+                                  <a href="/estates/create/{{$companies->id}}" class="btn btn-success">Add Estate</a>
+                                  <a href="/apartments/create/{{$companies->id}}" class="btn btn-success">Add Apartment</a>
                                   
 
                                   {!!Form::open(['action'=> ['companiesController@destroy',$companies->id],'method'=> 'POST','class'=>'pull-right'])!!}
