@@ -37,6 +37,7 @@
                     <div class="list-group">
                       @if(!Auth::guest())
                             @if(Auth::user()->id == $companies->user_id)
+                            
                                   <a href="/companies/{{ $companies->id }}/edit" class="btn btn-primary ">Edit company</a>
                                   <a href="/estates/create/{{$companies->id}}" class="btn btn-success">Add Estate</a>
                                   <a href="/apartments/create/{{$companies->id}}" class="btn btn-success">Add Apartment</a>
@@ -47,12 +48,7 @@
                                   {{Form::submit('Delete company',['class'=>'btn btn-danger'])}}
                                   {!!Form::close()!!}
                                   @endif
-                            @endif
-                 
-                  
-                     
-                  
-                      
+                            @endif  
                     </div>
                   </div><!--/.sidebar-offcanvas-->
                 </div><!--/row-->

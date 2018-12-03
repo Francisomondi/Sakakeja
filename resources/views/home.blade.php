@@ -19,7 +19,7 @@
                                
                                     <h1>welcome To saka keja dear client</h1>
                                         <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-                                        <p><a class="btn btn-primary btn-lg" href="/companies/create" role="button">Create Company &raquo;</a></p>
+                                        <p><a class="btn btn-primary btn-lg" href="/apartments" role="button">view apartments &raquo;</a></p>
                              
                              
                             </div>
@@ -30,9 +30,9 @@
         </div>
         <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
                 <div class="list-group">
-                <a href="" class="btn btn-primary ">Add House</a>
-                  <a href="#" class="btn btn-danger">view my Houses</a>
+                  <a href="/apartments" class="btn btn-danger">view my Houses</a>
                   <a href="/companies" class="btn btn-success">view companies</a>
+                  
               
                   
                 </div>

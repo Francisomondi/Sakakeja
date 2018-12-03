@@ -16,15 +16,14 @@ class CreateApartmentsTable extends Migration
         Schema::create('apartments', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('category')->default('bedsitter');
             $table->longText('description');
-            $table->longText('location');
-            $table->string('cover_image');
+            $table->longText('estate');
+            $table->string('cover_image'); 
+            $table->string('category');
+            $table->string('price');
             $table->integer('user_id')->unsigned()->nullable();
-            $table->integer('estate_id')->unsigned()->nullable();
             $table->integer('company_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('estate_id')->references('id')->on('estates');
             $table->foreign('company_id')->references('id')->on('companies');
             $table->timestamps();
         });

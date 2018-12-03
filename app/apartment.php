@@ -9,9 +9,12 @@ class apartment extends Model
     protected $fillable = [
         'name',
          'description', 
-         'location',
+         'estate',
          'company_id',
-         'estate_id',
+         'user_id',
+         'category',
+         'price',
+         'cover_image',
     ];
     public function company(){
         return $this->belongsTo('App\company');
@@ -20,10 +23,10 @@ class apartment extends Model
         return $this->belongsTo('App\estate');
     }
     public function houses(){
-        return $this->hasMany('App\houses');
+        return $this->hasMany('App\house');
 
     }
     public function categories(){
-        return $this->hasMany('App\category');
+        return $this->hasOne('App\category');
     }
 }

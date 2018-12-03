@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\apartment;
+use App\company;
+use App\house;
 
 class apartmentsController extends Controller
 {
@@ -41,7 +43,8 @@ class apartmentsController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'description' => 'required',
-            'location' => 'required',
+            'estate' => 'required',
+            'category' => 'required',
             'cover_image' => 'image|nullable|max:1999'
         ]);
             //handle file upload
@@ -70,7 +73,9 @@ class apartmentsController extends Controller
         $apartments = new apartment;
         $apartments ->name = $request->input('name');
         $apartments ->description = $request->input('description');
-        $apartments ->location = $request->input('location');
+        $apartments ->estate = $request->input('estate');
+        $apartments ->price = $request->input('price');
+        $apartments ->category = $request->input('category');
         $apartments ->cover_image = $fileNameToStore;
         $apartments ->company_id = $request->input('company_id');
         $apartments ->user_id = auth()->user()->id;
@@ -87,9 +92,10 @@ class apartmentsController extends Controller
      */
     public function show($id)
     {
-        $apartments = apartment::find($id);
+      
         $apartments = apartment::where('id',$id)->first();
-        return view('apartments.show')->with('apartments',$apartments);
+        $houses = house::where('apartment_id',$id)->get();
+        return view('apartments.show',compact('apartments','houses'));
     }
 
     /**

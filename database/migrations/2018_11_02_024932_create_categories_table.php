@@ -17,12 +17,6 @@ class CreateCategoriesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->longText('description');
-            $table->integer('house_id')->unsigned()->nullable();
-            $table->integer('apartment_id')->unsigned()->nullable();
-            $table->integer('estate_id')->unsigned()->nullable();
-            $table->foreign('apartment_id')->references('id')->on('apartments');
-            $table->foreign('house_id')->references('id')->on('houses');
-            $table->foreign('estate_id')->references('id')->on('companies');
             $table->timestamps();
         });
     }

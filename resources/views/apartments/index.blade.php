@@ -1,10 +1,8 @@
 @extends('layouts.app')
 @section('content')
-<main role="main">
-
 
 <div class="album py-5 bg-light">
-        <div class="container">
+        <div class="container" style="max-width: 100%;text-align:center">
                
         
                 <div class="row">
@@ -12,19 +10,23 @@
 
                         @foreach($apartments as $apartment)
                       <div class="col-md-2 selector-for-some-widget ">
-                        <div class="card mb-2 shadow-sm" >
+                        <div class="card mb-3 shadow-sm" >
                         <h3>{{$apartment->name}}</h3>
+                        <a href="/apartments/{{$apartment->id}}">
                         <img class="card-img-top" src="/storage/cover_images/{{ $apartment->cover_image }}" alt="apartment cover image">
+                        </a>
                           <div class="card-body">
-                            <p class="card-text">{{$apartment->description}}.</p>
+                            <p class="card-text">{{$apartment->description}}</p>
+                            <p class="card-text" style="background: #fff;color:black;border-radius:30px">Estate: {{$apartment->estate}}</p>
+                            <p class="card-text" style="background: #f57f27;color:black">price: {{$apartment->price}}</p>
                             
-                            <button class="btn btn-default " style="aligh: center">{{$apartment->category}}</button>
+                            <small class="text-muted" style="font-size:15px">{{$apartment->category}}</small>
                             <div class="d-flex justify-content-between align-items-center">
                               <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                <a href="/apartments/show/{{$apartment->id}}"><button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
                                 <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                               </div>
-                              <small class="text-muted">9 mins</small>
+                              <small class="text-muted">{{$apartment->created_at}}</small>
                             </div>
                           </div>
                         </div>
@@ -40,12 +42,12 @@
                   </div>
                  
             </div>
-          <a class="btn btn-primary" href="/home" role="button">Back
+          <a class="btn btn-primary" href="/companies" role="button">Back
               &raquo;</a>
 </div>
 
 
-</main>
+
 
 
 @endsection
