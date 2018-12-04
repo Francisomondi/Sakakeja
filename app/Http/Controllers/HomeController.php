@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\apartment;
 
 class HomeController extends Controller
 {
@@ -26,7 +27,7 @@ class HomeController extends Controller
     {
        $user_id = auth()->user()->id;
        $user = User::find($user_id);
-        return view('home')->with('companies', $user->companies);
+        return view('home')->with('apartments', $user->apartments);
     }
 }
   

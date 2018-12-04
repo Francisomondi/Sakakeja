@@ -17,9 +17,7 @@ class house extends Model
     public function estate(){
         return $this->belongsTo('App\estate');
     }
-    public function company(){
-        return $this->belongsTo('App\company');
-    }
+   
     public function categories(){
         return $this->hasMany('App\category');
     }

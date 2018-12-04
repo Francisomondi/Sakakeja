@@ -17,9 +17,15 @@
                     <div class="jumbotron">
                             <div class="container">
                               <h1>Looking For Vaccant Rentals Around You??</h1>
-                              <p>Saka keja offers a platform to find a rental house of your choice from a location of your
+                              <p class="welcome">Saka keja offers a platform to find a rental house of your choice from a location of your
                                    choice with just a click of a button ,Its absolutely free!!</button></p>
-                              <p><a class="btn btn-primary btn-lg" href="/apartments" role="button">view rentals &raquo;</a></p>
+                             <hr style="background-color:antiquewhite">
+
+
+                              <div class="btn-group">
+                                    <a href="/apartments"><button type="button" class="btn btn-lg btn-outline-primary">view Apartments &raquo;</button></a>
+                                    <a href=""><button type="button" class="btn btn-lg btn-outline-secondary active">By a House &raquo;</button></a>
+                                  </div>
                             </div>
                           </div>
                 </div>

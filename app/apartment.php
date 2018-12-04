@@ -10,14 +10,14 @@ class apartment extends Model
         'name',
          'description', 
          'estate',
-         'company_id',
+    
          'user_id',
          'category',
          'price',
          'cover_image',
     ];
-    public function company(){
-        return $this->belongsTo('App\company');
+    public function users(){
+        return $this->belongsTo('App\user');
     }
     public function estate(){
         return $this->belongsTo('App\estate');

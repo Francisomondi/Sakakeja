@@ -15,16 +15,15 @@ Route::get('/','pagesController@index');
 Route::get('/about','pagesController@about');
 Route::get('/estates','pagesController@estates');
 Route::get('/testimony','pagesController@testimony');
-Route::resource('companies','companiesController');
+
 
 
 
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/estates/create/{company_id?}', 'estatesController@create');  
-Route::get('/apartments/create/{company_id?}', 'apartmentsController@create');
+Route::get('/home', 'HomeController@index')->name('home');  
+Route::get('/apartments/create', 'apartmentsController@create');
 Route::get('/apartments/show/{apartment_id?}', 'apartmentsController@show');
 Route::get('/houses/create/{apartment_id?}', 'housesController@create');
 Route::get('/houses/show/{id}', 'housesController@show');

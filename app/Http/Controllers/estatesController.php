@@ -24,9 +24,9 @@ class estatesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($company_id = null)
+    public function create()
     {
-        return view('estates.create')->with('company_id',$company_id); 
+        return view('estates.create'); 
     }
 
     /**
@@ -46,7 +46,6 @@ class estatesController extends Controller
         $estates = new estate;
         $estates ->name = $request->input('name');
         $estates ->location = $request->input('location');
-        $estates ->company_id = $request->input('company_id');
         $estates ->user_id = auth()->user()->id;
         $estates ->save();
  

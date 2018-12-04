@@ -17,9 +17,7 @@ class CreateEstatesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->longText('location');
-            $table->integer('company_id')->unsigned()->nullable();
             $table->integer('user_id')->unsigned()->nullable();
-            $table->foreign('company_id')->references('id')->on('companies');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });

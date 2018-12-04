@@ -1,9 +1,21 @@
 @extends('layouts.app')
 @section('content')
 <h1>{{$apartments->name}}</h1>
+@if(!Auth::guest())
+    @if(Auth::user()->id == $apartments->user_id)
+      <a class="btn btn-primary" href="/apartments">  back</a>
+      <a class="btn btn-secondary" href="/houses/create/{{$apartments->id}}">upload images to this house</a>
+      
+      @else
+      <a class="btn btn-primary" href="/apartments">  back</a>
+    @endif
+    @else
+    <a class="btn btn-primary" href="/apartments">  back</a>
+   
 
-<a class="btn btn-primary" href="/apartments">  back</a>
-<a class="btn btn-secondary" href="/houses/create/{{$apartments->id}}">upload images to this house</a>
+
+@endif
+
 <hr>
 
 <div class="album py-5 bg-light">
@@ -27,9 +39,9 @@
                             <div class="d-flex justify-content-between align-items-center">
                               <div class="btn-group">
                                 <a href="/houses/show/{{$house->id}}"><button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                              <a href="/apartments/{{$house->apartment_id}}/edit"><button type="button" class="btn btn-sm btn-outline-secondary">Edit</button></a>
                               </div>
-                              <small class="text-muted">{{$house->created_at}}</small>
+                            <small class="text-muted">{{$house->created_at}}</small>
                             </div>
                           </div>
                         </div>
@@ -38,7 +50,7 @@
                       @endforeach
 
                       @else
-                        <p>no apartments found</p>
+                        <p>No Rooms Added Yet</p>
                       
                       @endif
                       

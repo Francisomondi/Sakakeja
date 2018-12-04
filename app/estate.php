@@ -9,14 +9,9 @@ class estate extends Model
      protected $fillable = [
         'name',
          'location', 
-         'company_id',
+        
     ];
-    public function company(){
-        return $this->belongsToMany('App\company');
-    }
-    public function user(){
-        return $this->belongsTo('App\user');
-    }
+   
     public function apartments(){
         return $this->hasMany('App\apartment');
         

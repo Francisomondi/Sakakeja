@@ -17,9 +17,14 @@
                     <div class="jumbotron">
                             <div class="container">
                                
-                                    <h1>welcome To saka keja dear client</h1>
-                                        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-                                        <p><a class="btn btn-primary btn-lg" href="/apartments" role="button">view apartments &raquo;</a></p>
+                                    <h1>Welcome to SakaHouse Online Platform</h1>
+                                        <p>SakaHouse gives you an online platform to share your vaccant Rental Apartments with your Clients. Get connected with your clients right away. Lets get started.</p>
+                                       
+
+                                        <div class="btn-group">
+                                                <a href="/apartments"><button type="button" class="btn btn-lg btn-outline-primary">view apartments</button></a>
+                                                <a href=""><button type="button" class="btn btn-lg btn-outline-secondary active">By a House</button></a>
+                                              </div>
                              
                              
                             </div>
@@ -30,13 +35,33 @@
         </div>
         <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
                 <div class="list-group">
-                  <a href="/apartments" class="btn btn-danger">view my Houses</a>
-                  <a href="/companies" class="btn btn-success">view companies</a>
+                  <a href="/apartments" class="btn btn-danger">view Apartments</a>
+                 
+                  <a href="/apartments/create" class="btn btn-success">create apartment</a>
                   
-              
+              <hr>
+              <br><br><br><br>
                   
                 </div>
-              </div><!--/.sidebar-offcanvas-->
+                @if(count($apartments)>0)
+                    <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action active">
+                                My Apartments 
+                                </a>
+                            @foreach($apartments as $apartment)
+                            <a href="#" class="list-group-item list-group-item-action">{{$apartment->name}}</a>
+                            
+                            @endforeach
+                    
+                    
+                    </div>
+                    @else
+                    <p class="list-group-item list-group-item-action active">
+                           You have no apartment(s)
+                    </p>
+
+                @endif
+        </div><!--/.sidebar-offcanvas-->
     </div>
 
 @endsection

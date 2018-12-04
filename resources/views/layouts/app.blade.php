@@ -29,6 +29,7 @@
     <div id="app">
             @include('includes.header')
         <main class="py-4">
+                
                 <div class="container" style="max-width:100%">
                         
                         @include('includes.messages')

@@ -4,12 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\apartment;
-use App\company;
 use App\house;
 
 class apartmentsController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth',['except'=>['index','show']]);
+    }
+      /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -26,9 +34,9 @@ class apartmentsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($company_id=null)
+    public function create()
     {
-        return view('apartments.create') ->with('company_id', $company_id);
+        return view('apartments.create');
     }
 
     /**
@@ -77,7 +85,6 @@ class apartmentsController extends Controller
         $apartments ->price = $request->input('price');
         $apartments ->category = $request->input('category');
         $apartments ->cover_image = $fileNameToStore;
-        $apartments ->company_id = $request->input('company_id');
         $apartments ->user_id = auth()->user()->id;
         $apartments ->save();
 
@@ -106,7 +113,9 @@ class apartmentsController extends Controller
      */ 
     public function edit($id)
     {
-        //
+        $apartments = apartment::where('id',$id)->first();
+        $houses = house::where('apartment_id',$id)->get();
+        return view('apartments.edit',compact('apartments','houses'));
     }
 
     /**
@@ -118,7 +127,48 @@ class apartmentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+          //get request input
+          $this->validate($request, [
+            'name' => 'required',
+            'description' => 'required',
+            'estate' => 'required',
+            'category' => 'required',
+            'cover_image' => 'image|nullable|max:1999'
+        ]);
+            //handle file upload
+        if($request->hasFile('cover_image')){
+
+            //get FileName with extension
+            $fileNameWithExt= $request->file('cover_image')->getClientOriginalName();
+
+            //get just filename
+            $filename= pathinfo( $fileNameWithExt, PATHINFO_FILENAME );
+
+            //get just ext
+            $extension  = $request->file('cover_image')->getClientOriginalExtension();
+
+            //filename to store
+            $fileNameToStore =$filename.'.'.time().'.'.$extension;
+
+            //upload the image
+            $path= $request->file('cover_image')->storeAs('public/cover_images',$fileNameToStore);
+
+        }else{
+            $fileNameToStore = 'noimage.jpg';
+
+        }
+
+        $apartments = apartment::find($id);
+        $apartments ->name = $request->input('name');
+        $apartments ->description = $request->input('description');
+        $apartments ->estate = $request->input('estate');
+        $apartments ->price = $request->input('price');
+        $apartments ->category = $request->input('category');
+        $apartments ->cover_image = $fileNameToStore;
+        $apartments ->user_id = auth()->user()->id;
+        $apartments ->save();
+
+        return redirect('/apartments')->with('success', 'apartment   updated Successfully');
     }
 
     /**

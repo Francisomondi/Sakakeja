@@ -27,6 +27,10 @@
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
+                        <form class="form-inline mt-2 mt-md-0">
+                                <input class="form-control mr-sm-2" type="text" placeholder="Search by Location" aria-label="Search">
+                                <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
+                              </form>
                     <!-- Authentication Links -->
                     @guest
                         <li class="nav-item">

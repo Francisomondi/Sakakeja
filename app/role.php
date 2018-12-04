@@ -11,7 +11,7 @@ class role extends Model
         'name',
         
     ];
-    public function user(){
-        return $this->belongsTo('App\user');
+    public function users(){
+        return $this->hasMany('App\user');
     } 
 }

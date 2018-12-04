@@ -27,12 +27,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-    public function company(){
-        return $this->hasOne('App\company');
-    }
-    public function estate(){
-        return $this->hasMany('App\estate');
-    }
+    
     public function comments(){
         return $this->hasMany('App\comment');
     }
@@ -41,5 +36,8 @@ class User extends Authenticatable
     }
     public function apartments(){
         return $this->hasMany('App\apartment');
+    }
+    public function houses(){
+        return $this->hasMany('App\house');
     }
 }
