@@ -15,19 +15,26 @@
                     @endif
 
                     <div class="jumbotron">
-                            <div class="container">
-                              <h1>Looking For Vaccant Rentals Around You??</h1>
-                              <p class="welcome">Saka keja offers a platform to find a rental house of your choice from a location of your
-                                   choice with just a click of a button ,Its absolutely free!!</button></p>
-                             <hr style="background-color:antiquewhite">
+                           
+                                    <h1>Looking For Vaccant Rentals or homes to buy Around You??</h1>
+                                    
+                                    
+                                    <p class="welcome">SakaHouse offers a platform to  help you find rental houses and Homes to buy  at the best price from a location of your
+                                        choice with just a click of a button.</p>
+                                    <hr style="background-color:antiquewhite">
 
 
-                              <div class="btn-group">
-                                    <a href="/apartments"><button type="button" class="btn btn-lg btn-outline-primary">view Apartments &raquo;</button></a>
-                                    <a href=""><button type="button" class="btn btn-lg btn-outline-secondary active">By a House &raquo;</button></a>
-                                  </div>
-                            </div>
-                          </div>
+                                    <div class="list-group">
+                                                <a href="/apartments"><button type="button" class="btn btn-lg btn-outline-primary">view Apartments/Offices &raquo;</button></a>
+                                            
+                                                <a href="/properties"><button type="button" class="btn btn-lg btn-outline-secondary active">Buy a House &raquo;</button></a>
+                                            
+                                        <hr>
+                                        <br>
+                                            
+                                    </div>
+                            
+                   </div>
                 </div>
                 </div>
             </div>

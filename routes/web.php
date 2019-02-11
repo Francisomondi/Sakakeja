@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/','pagesController@index');
+Route::get('/','apartmentsController@index');
 Route::get('/about','pagesController@about');
 Route::get('/estates','pagesController@estates');
 Route::get('/testimony','pagesController@testimony');
@@ -26,14 +26,16 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/apartments/create', 'apartmentsController@create');
 Route::get('/apartments/show/{apartment_id?}', 'apartmentsController@show');
 Route::get('/houses/create/{apartment_id?}', 'housesController@create');
+Route::get('/rooms/create/{house_id?}', 'roomsController@create');
 Route::get('/houses/show/{id}', 'housesController@show');
+Route::get('/rooms/show/{id}', 'roomsController@show');
 Route::delete('/houses//{id}', 'housesController@destroy');
 Route::resource('apartments','apartmentsController');
-Route::resource('categories','categoriesController');
+Route::resource('rooms','roomsController');
 Route::resource('comments','commentsController');
-Route::resource('estates','estatesController');
 Route::resource('houses','housesController');
 Route::resource('roles','rolesController');
+Route::resource('properties','propertyController');
 Route::resource('users','usersController');
 Auth::routes();
 

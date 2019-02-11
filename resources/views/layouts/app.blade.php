@@ -30,7 +30,7 @@
             @include('includes.header')
         <main class="py-4">
                 
-                <div class="container" style="max-width:100%">
+                <div class="container" style="max-width:100%;">
                         
                         @include('includes.messages')
                             @yield('content')
@@ -38,6 +38,6 @@
                     </div> 
         </main>
     </div>
-    @include('includes.footer')
+    
 </body>
 </html>

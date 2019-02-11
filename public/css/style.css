@@ -30,21 +30,16 @@
 
 
 body{
-	background-image: url('/../images/keja.jpg');
+	
 	background-attachment: fixed;
 	font-size: 15px;
 }
-#company-table{
-	background: rgba(0, 0, 0, 0.8);
-	color: #fff;
-}
-.card{
-	background: rgba(0, 0, 0, 0.8);
-	color: #fff;
-}
+
 .jumbotron{
-	background: rgba(0, 0, 0, 0.8);
-	color: #fff;
+	background-image: url('/storage/cover_images/{{ $apartments->cover_image }}');
+	background-repeat:no-repeat;
+	background-size: 100%;
+	
 	margin-top:30px;
 	text-align: center;
 }
@@ -53,7 +48,19 @@ body{
 	margin: 0px;
 	
   }
-  .card-body{
-	background: rgba(0, 0, 0, 0.8);
-  }
+  
+ .album{
+	text-align:center;
+ }
+ .selector-for-some-widget{
+	margin-left:10px;
+	display:flex;
+	
+ }
  
+ 
+ .price{
+	background: #f57f27;
+	color:black;
+
+ }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class usersController extends Controller
 {
@@ -13,7 +14,7 @@ class usersController extends Controller
      */
     public function index()
     {
-        //
+       
     }
 
     /**

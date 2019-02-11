@@ -4,11 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\apartment;
-use App\company;
 use App\house;
+use App\User;
+use App\room;
 
 class housesController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth',['except'=>['index','show']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +26,8 @@ class housesController extends Controller
      */
     public function index()
     {
-        //
+       $houses = house::all();
+       return view('houses.index')->with('houses', $houses);
     }
 
     /**
@@ -25,7 +36,9 @@ class housesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create($apartment_id)
+
     {
+       
      return view('houses.create')->with('apartment_id',$apartment_id);
     }
 
@@ -41,6 +54,8 @@ class housesController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'description' => 'required',
+            'price' => 'required',
+            'category' => 'required',
             'photo' => 'image|nullable|max:1999'
         ]);
             //handle file upload
@@ -69,7 +84,9 @@ class housesController extends Controller
         $houses = new house;
         $houses ->title = $request->input('title');
         $houses ->description = $request->input('description');
-       $houses ->photo = $fileNameToStore;
+        $houses ->category = $request->input('category');
+        $houses ->price = $request->input('price');
+        $houses ->photo = $fileNameToStore;
         $houses ->apartment_id = $request->input('apartment_id');
         $houses ->user_id = auth()->user()->id;
         $houses ->save();
@@ -79,14 +96,18 @@ class housesController extends Controller
 
     /**
      * Display the specified resource.
-     *
+      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $houses = house::where('id',$id)->first();
-        return view('houses.show',compact('houses',$houses));
+       
+       
+
+        $houses = house::with('rooms')->find($id); 
+      
+        return view('houses.show')->with('houses',$houses);
     }
    
 
@@ -98,7 +119,9 @@ class housesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $houses = house::with('apartments')->find($id); 
+       
+        return view('houses.edit')->with('apartments','houses');
     }
 
     /**
@@ -122,11 +145,9 @@ class housesController extends Controller
     public function destroy($id)
     {
          $houses = house::find($id);
-       if(auth()->user()->id !== $houses->user_id){
-        return redirect('/houses')->with('error','Unauthorized access ');
-    }
+      
        $houses->delete();
 
        return redirect('/apartments')->with('success', 'image   deleted Successfully');    
-}
+    }
 }

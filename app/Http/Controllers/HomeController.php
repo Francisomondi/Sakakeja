@@ -29,5 +29,6 @@ class HomeController extends Controller
        $user = User::find($user_id);
         return view('home')->with('apartments', $user->apartments);
     }
+   
 }
   

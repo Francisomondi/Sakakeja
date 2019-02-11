@@ -17,13 +17,11 @@ class CreateApartmentsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->longText('description');
-            $table->longText('estate');
+            $table->string('estate');
+            $table->integer('phone');
             $table->string('cover_image'); 
-            $table->string('category');
-            $table->string('price');
             $table->integer('user_id')->unsigned()->nullable();
-           
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             
             $table->timestamps();
         });

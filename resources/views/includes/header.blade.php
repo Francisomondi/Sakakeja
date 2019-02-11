@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark navbar-laravel bg-primary">
         <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
+            <a class="navbar-brand" href="{{ url('/apartments') }}">
+                <img  src="/images/pato.png" alt="sakakeja logo"> 
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
@@ -16,9 +16,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{url('/about')}}">About</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{url('/estates')}}">Estates</a>
-                                </li>
+                               
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{url('/testimony')}}">Testimony </a>
                                 </li>

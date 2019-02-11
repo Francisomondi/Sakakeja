@@ -40,4 +40,7 @@ class User extends Authenticatable
     public function houses(){
         return $this->hasMany('App\house');
     }
+    public function rooms(){
+        return $this->hasMany('App\room');
+    }
 }

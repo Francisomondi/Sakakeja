@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\apartment;
 use App\house;
+use App\User;
 
 class apartmentsController extends Controller
 {
@@ -24,7 +25,9 @@ class apartmentsController extends Controller
      */
     public function index()
     {
-        $apartments= apartment::All();
+
+        $apartments= apartment::orderBy('created_at','desc')->get();
+        
         
         return view('apartments.index')->with('apartments', $apartments);
     }
@@ -36,6 +39,7 @@ class apartmentsController extends Controller
      */
     public function create()
     {
+       
         return view('apartments.create');
     }
 
@@ -52,7 +56,7 @@ class apartmentsController extends Controller
             'name' => 'required',
             'description' => 'required',
             'estate' => 'required',
-            'category' => 'required',
+             'phone' => 'required',
             'cover_image' => 'image|nullable|max:1999'
         ]);
             //handle file upload
@@ -82,8 +86,7 @@ class apartmentsController extends Controller
         $apartments ->name = $request->input('name');
         $apartments ->description = $request->input('description');
         $apartments ->estate = $request->input('estate');
-        $apartments ->price = $request->input('price');
-        $apartments ->category = $request->input('category');
+        $apartments ->phone = $request->input('phone');
         $apartments ->cover_image = $fileNameToStore;
         $apartments ->user_id = auth()->user()->id;
         $apartments ->save();
@@ -99,10 +102,10 @@ class apartmentsController extends Controller
      */
     public function show($id)
     {
+       
+        $apartments = apartment::with('houses')->find($id); 
       
-        $apartments = apartment::where('id',$id)->first();
-        $houses = house::where('apartment_id',$id)->get();
-        return view('apartments.show',compact('apartments','houses'));
+        return view('apartments.show')->with('apartments',$apartments);
     }
 
     /**
@@ -113,9 +116,12 @@ class apartmentsController extends Controller
      */ 
     public function edit($id)
     {
-        $apartments = apartment::where('id',$id)->first();
-        $houses = house::where('apartment_id',$id)->get();
-        return view('apartments.edit',compact('apartments','houses'));
+        $apartments = apartment::find($id); 
+
+        if(Auth()->user()->id !==$apartments->user_id){
+            return redirect('apartments')->with('error','Unauthorised Access');
+        }
+        return view('apartments.edit')->with('apartments',$apartments);
     }
 
     /**
@@ -126,13 +132,12 @@ class apartmentsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-          //get request input
-          $this->validate($request, [
+    { //get request input
+        $this->validate($request, [
             'name' => 'required',
             'description' => 'required',
             'estate' => 'required',
-            'category' => 'required',
+             'phone' => 'required',
             'cover_image' => 'image|nullable|max:1999'
         ]);
             //handle file upload
@@ -162,8 +167,7 @@ class apartmentsController extends Controller
         $apartments ->name = $request->input('name');
         $apartments ->description = $request->input('description');
         $apartments ->estate = $request->input('estate');
-        $apartments ->price = $request->input('price');
-        $apartments ->category = $request->input('category');
+        $apartments ->phone = $request->input('phone');
         $apartments ->cover_image = $fileNameToStore;
         $apartments ->user_id = auth()->user()->id;
         $apartments ->save();
@@ -179,6 +183,10 @@ class apartmentsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $apartments = apartment::find($id);
+        
+        $apartments->delete();
+ 
+        return redirect('/apartments')->with('success', 'Apartment   deleted Successfully');   
     }
 }
